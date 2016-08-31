@@ -1,8 +1,10 @@
 body {
     background-image: url("../images/backgroundcartoons2.jpg");
     background-size: 100%;
+    font-family: 'Sigmar One', cursive;
     font-size: 20px;
     font-weight: bold;
+    color: red;
 }
 
 .container {
@@ -19,7 +21,7 @@ h1 {
 }
 
 .hover:hover {
-    color: red;
+    color: skyblue;
 }
 
 img {

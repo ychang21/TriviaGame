@@ -75,6 +75,17 @@ var questions = [
     }
 ];
 
+//audio
+
+var beginning = document.createElement('audio');
+           beginning.setAttribute('src', "assets/images/dexterslab.m4a");
+
+//audio functions
+
+function playbeginning() {
+    beginning.play();
+}
+
 //variables 
 var correct = 0;
 var incorrect = 0;
@@ -108,17 +119,11 @@ function stop(){
     clearInterval(counter);
     clearTimeout(counter);
     number = startAt;
-    // wrongPage(); //because if it counts down to 0 and no input then incorrect
     unanswered();
 }
 
-// function resetTimer() {
-//     number = startAt;
-//     time();
-//     run();
-// }
-
 $("#reset").hide();
+playbeginning();
 
 //start function with button
 $("#start").on("click", function(){
@@ -126,7 +131,6 @@ $("#start").on("click", function(){
 });
 function startGame(){
     $("#start").hide();
-    // $("#reset").hide();
     $(".greeting").hide();
     time();
     run();
@@ -140,7 +144,6 @@ function game(){
     $("#answerChoice1").append("<p class='hover'>" + questions[currentQuestion].choices[1] + "</p>");
     $("#answerChoice2").append("<p class='hover'>" + questions[currentQuestion].choices[2] + "</p>");
     $("#answerChoice3").append("<p class='hover'>" + questions[currentQuestion].choices[3] + "</p>");
-    // answerSelection();
 }
 
 //set up the next question in the questions array
@@ -152,7 +155,6 @@ function nextQuestion(){
     if (currentQuestion == questions.length) {
         result();
     } else {
-    // resetTimer();
     time();
     run();
     $("#ask").append("<h2>" + questions[currentQuestion].question +"</h2>");
@@ -163,7 +165,7 @@ function nextQuestion(){
 }
 }
 //click events to select from answer choices
-// $(".answerList").on("click", function(){
+
     $("#answerChoice0").on("click", function(){
         userAnswer = 0;
         answerCompare();
@@ -180,7 +182,7 @@ function nextQuestion(){
         userAnswer = 3;
         answerCompare();
     });
-// });
+
 
 //comparing user answer with correct answer
 function answerCompare(){
@@ -196,10 +198,6 @@ function answerCompare(){
 function correctPage(){
     $("#ask").empty();
     $(".answerList").empty();
-    // $("#answer0").empty();
-    // $("#answer1").empty();
-    // $("#answer2").empty();
-    // $("#answer3").empty();
     $("#outcome").append("<h2>That's Correct!</h2>");
     $("#image-answer").append("<img src='" + questions[currentQuestion].image + "'/>");
     correct++;
@@ -212,10 +210,6 @@ function correctPage(){
 function wrongPage(){
     $("#ask").empty();
     $(".answerList").empty();
-    // $("#answer0").empty();
-    // $("#answer1").empty();
-    // $("#answer2").empty();
-    // $("#answer3").empty();
     $("#outcome").append("<h2>That's Wrong!</h2>");
     $("#right-answer").append("<p>The correct answer is: " + questions[currentQuestion].choices[questions[currentQuestion].correctAnswer] + "</p>");
     $("#image-answer").append("<img src='" + questions[currentQuestion].image + "'/>");
@@ -228,10 +222,6 @@ function wrongPage(){
 function unanswered(){
     $("#ask").empty();
     $(".answerList").empty();
-    // $("#answer0").empty();
-    // $("#answer1").empty();
-    // $("#answer2").empty();
-    // $("#answer3").empty();
     $("#outcome").append("<h2>Time's Up!</h2>");
     $("#right-answer").append("<p>The correct answer is: " + questions[currentQuestion].choices[questions[currentQuestion].correctAnswer] + "</p>");
     $("#image-answer").append("<img src='" + questions[currentQuestion].image + "'/>");
@@ -262,15 +252,10 @@ function stop2(){
     clearInterval(counter2);
     clearTimeout(counter2);
     number2 = inbetween;
-    // resetTimer();
     nextQuestion();
 }
 
-// function resetTimer2() {
-//     number2 = inbetween;
-//     between();
-// }
-
+//result page displaying correct answers, incorrect, and unanswered
 function result() {
     clearTimeout(counter);
     clearTimeout(counter2);
@@ -294,6 +279,8 @@ $("#reset").on("click", function(){
     $("#resultPage1").hide();
     $("#resultPage2").hide();
     $("#resultPage3").hide();
+    $("#reset").hide();
+    playbeginning();
     startGame();
 })
 

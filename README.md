@@ -32,5 +32,5 @@ Download the zip or fork the repository and simply open the index.html on your b
 ### Below is an image of the 90's Trivia Game.
 ![Trivia Game](assets/images/cartoontrivia.png)
 
-### Here is an example of a question with the timing ticking down.
+### Here is an example of a question with the timer ticking down.
 ![First question](assets/images/first-question.png)
